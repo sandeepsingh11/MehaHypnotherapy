@@ -1,48 +1,7 @@
 $(document).ready(function() {
 	console.log("start doc");
 	
-		function navClick()
-	{
-		// navigation functionality
 		
-		// show / hide the nav menu when the dashes / X is clicked on
-		var navContainer = document.getElementById("navContainer");
-		navContainer.classList.toggle("change");
-		
-		// nav container dropdown
-		var nav = document.getElementById("nav");
-		if (nav.style.display == "block") {
-			// hide navbar
-			nav.style.display = "none";
-			navContainer.style.backgroundColor = "transparent";
-		}
-		else {
-			// show navbar
-			nav.style.display = "block";
-			navContainer.style.backgroundColor = "#FCFBE3";
-		}
-
-		// get coordinates for "Services" nav element and set postion of "subNav"
-		var rect = nav.children[2].getBoundingClientRect();
-		var subNav = document.getElementById("subNav");
-		subNav.style.left = rect.left + "px";
-		subNav.style.top = (rect.height + rect.top) + "px";
-
-		// services dropdown (both for services and the subNav)
-		nav.children[2].onmouseenter = function() {
-			document.getElementById("subNav").style.display = "block";
-		}
-		nav.children[2].onmouseleave = function() {
-			document.getElementById("subNav").style.display = "none";
-		}
-		subNav.onmouseenter = function() {
-			document.getElementById("subNav").style.display = "block";
-		}
-		subNav.onmouseleave = function() {
-			document.getElementById("subNav").style.display = "none";
-		}
-		console.log("navClick ready"); 
-	}
 
 	// THESE 'GET CONTENT' FUNCTIONS HAVE TO BE IN DOC.READY AS IT FIRES BEFORE CONTENT IS LOADED
 	
@@ -52,6 +11,50 @@ $(document).ready(function() {
 	$.get('../html/banner.html', function(content) {
 		console.log("loading banner");
 		banner.html(content);
+		console.log("now binding click");
+
+		// function navClick()
+		banner.click(function() {
+			// navigation functionality
+			
+			// show / hide the nav menu when the dashes / X is clicked on
+			var navContainer = document.getElementById("navContainer");
+			navContainer.classList.toggle("change");
+			
+			// nav container dropdown
+			var nav = document.getElementById("nav");
+			if (nav.style.display == "block") {
+				// hide navbar
+				nav.style.display = "none";
+				navContainer.style.backgroundColor = "transparent";
+			}
+			else {
+				// show navbar
+				nav.style.display = "block";
+				navContainer.style.backgroundColor = "#FCFBE3";
+			}
+
+			// get coordinates for "Services" nav element and set postion of "subNav"
+			var rect = nav.children[2].getBoundingClientRect();
+			var subNav = document.getElementById("subNav");
+			subNav.style.left = rect.left + "px";
+			subNav.style.top = (rect.height + rect.top) + "px";
+
+			// services dropdown (both for services and the subNav)
+			nav.children[2].onmouseenter = function() {
+				document.getElementById("subNav").style.display = "block";
+			}
+			nav.children[2].onmouseleave = function() {
+				document.getElementById("subNav").style.display = "none";
+			}
+			subNav.onmouseenter = function() {
+				document.getElementById("subNav").style.display = "block";
+			}
+			subNav.onmouseleave = function() {
+				document.getElementById("subNav").style.display = "none";
+			}
+			console.log("navClick ready"); 
+		})
 	})
 
 	// footer
@@ -60,7 +63,7 @@ $(document).ready(function() {
 		console.log("loading footer");
 		footer.html(content);
 	})
-	
+
 	console.log("done with doc");
 })
 
