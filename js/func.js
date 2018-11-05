@@ -52,8 +52,18 @@ $(document).ready(function() {
 			}
 			subNav.onmouseleave = function() {
 				document.getElementById("subNav").style.display = "none";
-			} 
+			}
 		})
+
+		// get path to set 'active' nav
+		var path = document.location.pathname;
+		switch(path) {
+			case '/':
+			$(nav).children()[0].addClass('active');
+			console.log('path: ' + path);
+			break;
+			
+		}
 	})
 
 	// footer
