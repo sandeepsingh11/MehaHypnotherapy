@@ -21,7 +21,7 @@ $(document).ready(function() {
 	console.log("done with doc");
 })
 
-window.onload(function(){
+window.addEventListener("load", function() {
 	console.log("start window");
 	// $.post('/getstate', function(res, status)
 	// {
