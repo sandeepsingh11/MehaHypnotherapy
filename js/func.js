@@ -57,10 +57,11 @@ $(document).ready(function() {
 
 		// get path to set 'active' nav
 		var path = document.location.pathname;
+		var links = $(nav).children();
 		switch(path) {
 			case '/':
-			$(nav).children()[0].addClass('active');
 			console.log('path: ' + path);
+			links[0].addClass('active');
 			break;
 			
 		}
