@@ -61,7 +61,7 @@ $(document).ready(function() {
 		switch(path) {
 			case '/':
 			console.log(nav.children[0]);
-			nav.children[0].addClass('active');
+			nav.children[0].classList.add('active');
 			break;
 			
 		}
