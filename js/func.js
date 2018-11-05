@@ -14,7 +14,8 @@ $(document).ready(function() {
 		console.log("now binding click");
 
 		// function navClick()
-		banner.click(function() {
+		var bars = $('#bars');
+		bars.click(function() {
 			// navigation functionality
 			
 			// show / hide the nav menu when the dashes / X is clicked on
@@ -57,11 +58,10 @@ $(document).ready(function() {
 
 		// get path to set 'active' nav
 		var path = document.location.pathname;
-		var links = $(nav).children();
 		switch(path) {
 			case '/':
-			console.log('path: ' + path);
-			links[0].addClass('active');
+			console.log(nav.children[0]);
+			nav.children[0].addClass('active');
 			break;
 			
 		}
