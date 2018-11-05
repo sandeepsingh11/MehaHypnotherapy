@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	console.log("start doc");
 	// THESE 'GET CONTENT' FUNCTIONS HAVE TO BE IN DOC.READY AS IT FIRES BEFORE CONTENT IS LOADED
 	
 	// get navigation / banner and footer content
@@ -12,48 +13,53 @@ $(document).ready(function() {
 	var footer = $('#footer');	
 	$.get('../html/footer.html', function(content) {
 		footer.html(content);
-	})	
+	})
+
+	$(footer).ready(function() {
+		console.log("footer fired!");
+	})
+	console.log("done with doc");
 })
 
-window.addEventListener("load", function load(event){
-	
-	$.post('/getstate', function(res, status)
-	{
-		//get username and logged in status
-		userInfo.username = res.username;
-		userInfo.loggedin = res.loggedin;
+window.onload(function(){
+	console.log("start window");
+	// $.post('/getstate', function(res, status)
+	// {
+	// 	//get username and logged in status
+	// 	userInfo.username = res.username;
+	// 	userInfo.loggedin = res.loggedin;
 		
-		//turn log in to log out if logged in
-		if(userInfo.loggedin)
-		{
-			//$("#loginbutton").text("Log out");
-			$("#loginbutton").hide();
-			$("#logoutbutton").show();
-		}
-		else
-		{
-			$("#logoutbutton").hide();
-			$("#loginbutton").show();
-		}
-	}).fail(function()
-	{
-		// alert("Something went wrong??");
-	});
+	// 	//turn log in to log out if logged in
+	// 	if(userInfo.loggedin)
+	// 	{
+	// 		//$("#loginbutton").text("Log out");
+	// 		$("#loginbutton").hide();
+	// 		$("#logoutbutton").show();
+	// 	}
+	// 	else
+	// 	{
+	// 		$("#logoutbutton").hide();
+	// 		$("#loginbutton").show();
+	// 	}
+	// }).fail(function()
+	// {
+	// 	// alert("Something went wrong??");
+	// });
 
-	let userInfo =
-	{
-		username: "",
-		loggedin: false
-	}
+	// let userInfo =
+	// {
+	// 	username: "",
+	// 	loggedin: false
+	// }
 
-	function logout()
-	{
-		$.post("/logout", function (res, status) {
-		  window.location.replace('/login');
-	     }).fail(function () {
-	          alert("Something went wrong??");
-	     })
-	}
+	// function logout()
+	// {
+	// 	$.post("/logout", function (res, status) {
+	// 	  window.location.replace('/login');
+	//      }).fail(function () {
+	//           alert("Something went wrong??");
+	//      })
+	// }
 
 
 	function navClick()
@@ -98,4 +104,6 @@ window.addEventListener("load", function load(event){
 		} 
 		
 	}
+
+	console.log("done with window");
 });
