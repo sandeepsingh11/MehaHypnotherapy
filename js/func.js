@@ -1,15 +1,6 @@
 $(document).ready(function() {
 	console.log("start doc");
-	// THESE 'GET CONTENT' FUNCTIONS HAVE TO BE IN DOC.READY AS IT FIRES BEFORE CONTENT IS LOADED
 	
-	// get navigation / banner and footer content
-	// nav & banner
-	var banner = $('#banner');
-	$.get('../html/banner.html', function(content) {
-		banner.html(content);
-	})
-	$(banner).ready(function() {
-		console.log("banner ready");
 		function navClick()
 	{
 		// navigation functionality
@@ -52,11 +43,23 @@ $(document).ready(function() {
 		} 
 	}
 
+	// THESE 'GET CONTENT' FUNCTIONS HAVE TO BE IN DOC.READY AS IT FIRES BEFORE CONTENT IS LOADED
+	
+	// get navigation / banner and footer content
+	// nav & banner
+	var banner = $('#banner');
+	$.get('../html/banner.html', function(content) {
+		console.log("loading banner");
+		banner.html(content);
+	})
+	$(banner).ready(function() {
+		console.log("banner ready");
 	})
 
 	// footer
 	var footer = $('#footer');	
 	$.get('../html/footer.html', function(content) {
+		console.log("loading footer");
 		footer.html(content);
 	})
 	$(footer).ready(function() {
@@ -65,8 +68,8 @@ $(document).ready(function() {
 	console.log("done with doc");
 })
 
-window.addEventListener("load", function() {
-	console.log("start window");
+// window.addEventListener("load", function() {
+// 	console.log("start window");
 	// $.post('/getstate', function(res, status)
 	// {
 	// 	//get username and logged in status
@@ -108,5 +111,5 @@ window.addEventListener("load", function() {
 
 	
 
-	console.log("done with window");
-});
+// 	console.log("done with window");
+// });
