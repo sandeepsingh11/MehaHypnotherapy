@@ -40,7 +40,8 @@ $(document).ready(function() {
 		}
 		subNav.onmouseleave = function() {
 			document.getElementById("subNav").style.display = "none";
-		} 
+		}
+		console.log("navClick ready"); 
 	}
 
 	// THESE 'GET CONTENT' FUNCTIONS HAVE TO BE IN DOC.READY AS IT FIRES BEFORE CONTENT IS LOADED
@@ -52,9 +53,6 @@ $(document).ready(function() {
 		console.log("loading banner");
 		banner.html(content);
 	})
-	$(banner).ready(function() {
-		console.log("banner ready");
-	})
 
 	// footer
 	var footer = $('#footer');	
@@ -62,9 +60,7 @@ $(document).ready(function() {
 		console.log("loading footer");
 		footer.html(content);
 	})
-	$(footer).ready(function() {
-		console.log("footer ready!");
-	})
+	
 	console.log("done with doc");
 })
 
