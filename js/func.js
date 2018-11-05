@@ -52,8 +52,7 @@ $(document).ready(function() {
 			}
 			subNav.onmouseleave = function() {
 				document.getElementById("subNav").style.display = "none";
-			}
-			console.log("navClick ready"); 
+			} 
 		})
 	})
 
@@ -64,48 +63,55 @@ $(document).ready(function() {
 		footer.html(content);
 	})
 
+
+
+
+	$.post('/getstate', function(res, status)
+	{
+		//get username and logged in status
+		userInfo.username = res.username;
+		userInfo.loggedin = res.loggedin;
+		
+		//turn log in to log out if logged in
+		if(userInfo.loggedin)
+		{
+			//$("#loginbutton").text("Log out");
+			$("#loginbutton").hide();
+			$("#logoutbutton").show();
+		}
+		else
+		{
+			$("#logoutbutton").hide();
+			$("#loginbutton").show();
+		}
+	}).fail(function()
+	{
+		// alert("Something went wrong??");
+	});
+
+	let userInfo =
+	{
+		username: "",
+		loggedin: false
+	}
+
+	function logout()
+	{
+		$.post("/logout", function (res, status) {
+		  window.location.replace('/login');
+	     }).fail(function () {
+	          alert("Something went wrong??");
+	     })
+	}
+	
+
+
+
 	console.log("done with doc");
 })
 
 // window.addEventListener("load", function() {
 // 	console.log("start window");
-	// $.post('/getstate', function(res, status)
-	// {
-	// 	//get username and logged in status
-	// 	userInfo.username = res.username;
-	// 	userInfo.loggedin = res.loggedin;
-		
-	// 	//turn log in to log out if logged in
-	// 	if(userInfo.loggedin)
-	// 	{
-	// 		//$("#loginbutton").text("Log out");
-	// 		$("#loginbutton").hide();
-	// 		$("#logoutbutton").show();
-	// 	}
-	// 	else
-	// 	{
-	// 		$("#logoutbutton").hide();
-	// 		$("#loginbutton").show();
-	// 	}
-	// }).fail(function()
-	// {
-	// 	// alert("Something went wrong??");
-	// });
-
-	// let userInfo =
-	// {
-	// 	username: "",
-	// 	loggedin: false
-	// }
-
-	// function logout()
-	// {
-	// 	$.post("/logout", function (res, status) {
-	// 	  window.location.replace('/login');
-	//      }).fail(function () {
-	//           alert("Something went wrong??");
-	//      })
-	// }
 
 
 	
