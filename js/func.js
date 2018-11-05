@@ -60,10 +60,34 @@ $(document).ready(function() {
 		var path = document.location.pathname;
 		switch(path) {
 			case '/':
-			console.log(nav.children[0]);
 			nav.children[0].classList.add('active');
 			break;
 			
+			case '/about':
+			nav.children[1].classList.add('active');
+			break;
+
+			case '/services':
+			nav.children[2].classList.add('active');
+			break;
+			
+			// [3] is subNav
+
+			case '/events':
+			nav.children[4].classList.add('active');
+			break;
+			
+			case '/schedule':
+			nav.children[5].classList.add('active');
+			break;
+			
+			case '/contact':
+			nav.children[6].classList.add('active');
+			break;
+			
+			case '/login':
+			nav.children[7].classList.add('active');
+			break;
 		}
 	})
 
